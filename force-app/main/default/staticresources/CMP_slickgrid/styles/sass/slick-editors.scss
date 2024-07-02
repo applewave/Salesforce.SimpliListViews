@@ -1,0 +1,504 @@
+@import './variables';
+@import './slick.layout';
+
+.slick-cell  {
+  input.dual-editor-text,
+  input.editor-text {
+    border: var(--slick-text-editor-border, $slick-text-editor-border);
+    border-radius: var(--slick-text-editor-border-radius, $slick-text-editor-border-radius);
+    background: var(--slick-text-editor-background, $slick-text-editor-background);
+    padding-bottom: var(--slick-text-editor-padding-bottom, $slick-text-editor-padding-bottom);
+    padding-left: var(--slick-text-editor-padding-left, $slick-text-editor-padding-left);
+    padding-right: var(--slick-text-editor-padding-right, $slick-text-editor-padding-right);
+    padding-top: var(--slick-text-editor-padding-top, $slick-text-editor-padding-top);
+    margin-left: var(--slick-text-editor-margin-left, $slick-text-editor-margin-left);
+    margin-bottom: var(--slick-text-editor-margin-bottom, $slick-text-editor-margin-bottom);
+    margin-right: var(--slick-text-editor-margin-right, $slick-text-editor-margin-right);
+    margin-top: var(--slick-text-editor-margin-top, $slick-text-editor-margin-top);
+    outline: 0;
+    height: 100%;
+    max-width: 100%;
+
+    &:not(.input-group-editor) {
+      width: 100%;
+    }
+    &:focus {
+      outline: 0;
+      border-color: var(--slick-text-editor-focus-border-color, $slick-text-editor-focus-border-color);
+      box-shadow: var(--slick-text-editor-focus-box-shadow, $slick-text-editor-focus-box-shadow);
+    }
+
+    &.right {
+      margin-left: var(--slick-text-editor-right-input-margin-left, $slick-text-editor-right-input-margin-left);
+    }
+
+    &[readonly] {
+      background-color: var(--slick-text-editor-readonly-color, $slick-text-editor-readonly-color);
+    }
+  }
+
+  .slider-editor {
+    height: 100%;
+    .slider-editor-input {
+      height: var(--slick-slider-editor-height, $slick-slider-editor-height);
+      &:focus {
+        outline: 0;
+        border-color: var(--slick-slider-editor-focus-border-color, $slick-slider-editor-focus-border-color);
+        box-shadow: var(--slick-slider-editor-focus-box-shadow, $slick-slider-editor-focus-box-shadow);
+      }
+    }
+  }
+
+  .input-group {
+    input.editor-text {
+      margin-left: 0;
+      transform: none;
+    }
+  }
+
+  .ms-filter.select-editor {
+    transform: var(--slick-multiselect-editor-transform, $slick-multiselect-editor-transform);
+    height: var(--slick-multiselect-editor-height, $slick-multiselect-editor-height);
+    button.ms-choice {
+      height: var(--slick-multiselect-editor-height, $slick-multiselect-editor-height);
+    }
+  }
+
+  .autocomplete-container.input-group,
+  .flatpickr.input-group {
+    height: var(--slick-date-editor-height, $slick-date-editor-height);
+    .input-group-btn {
+      &.input-group-append {
+        .btn {
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+          margin-left: -1px;
+        }
+      }
+      .btn {
+        background-color: #eeeeee;
+        border: 1px solid #cccccc;
+        padding: var(--slick-editor-input-group-clear-btn-icon-padding, $slick-editor-input-group-clear-btn-icon-padding);
+        border-top-right-radius: var(--slick-text-editor-border-radius, $slick-text-editor-border-radius);
+        border-bottom-right-radius: var(--slick-text-editor-border-radius, $slick-text-editor-border-radius);
+        cursor: pointer;
+        height: var(--slick-date-editor-height, $slick-date-editor-height);
+        &.icon-clear {
+          display: flex;
+          align-items: center;
+        }
+        &.icon-clear:before {
+          font-family: var(--slick-icon-font-family, $slick-icon-font-family);
+          font-size: var(--slick-editor-input-group-clear-btn-icon-size, $slick-editor-input-group-clear-btn-icon-size);
+          content: var(--slick-editor-input-group-clear-btn-icon, $slick-editor-input-group-clear-btn-icon);
+          display: inline-block;
+          height: var(--slick-editor-input-group-clear-btn-icon-height, $slick-editor-input-group-clear-btn-icon-height);
+          width: var(--slick-editor-input-group-clear-btn-icon-width, $slick-editor-input-group-clear-btn-icon-width);
+        }
+      }
+    }
+  }
+  .flatpickr-alt-input {
+    cursor: pointer;
+    height: var(--slick-date-editor-height, $slick-date-editor-height);
+    border-top-left-radius: var(--slick-text-editor-border-radius, $slick-text-editor-border-radius) !important;
+    border-bottom-left-radius: var(--slick-text-editor-border-radius, $slick-text-editor-border-radius) !important;
+    padding: var(--slick-date-editor-input-padding, $slick-date-editor-input-padding);
+
+    &.editor-text {
+      cursor: pointer;
+      background-color: var(--slick-flatpickr-bgcolor, $slick-flatpickr-bgcolor);
+
+      &:focus {
+        outline: 0;
+        border-color: var(--slick-date-editor-focus-border-color, $slick-date-editor-focus-border-color);
+        box-shadow: var(--slick-date-editor-focus-box-shadow, $slick-date-editor-focus-box-shadow);
+      }
+    }
+  }
+}
+
+/* Long Text Editor */
+.slick-large-editor-text {
+  z-index: 10000;
+  position: absolute;
+  background: var(--slick-large-editor-background-color, $slick-large-editor-background-color);
+  padding: var(--slick-large-editor-text-padding, $slick-large-editor-text-padding);
+  border: var(--slick-large-editor-border, $slick-large-editor-border);
+  border-radius: var(--slick-large-editor-border-radius, $slick-large-editor-border-radius);
+
+  .editor-footer {
+    text-align: var(--slick-large-editor-button-text-align, $slick-large-editor-button-text-align);
+    button {
+      margin-left: var(--slick-large-editor-footer-spacing, $slick-large-editor-footer-spacing);
+      border-radius: var(--slick-large-editor-button-border-radius, $slick-large-editor-button-border-radius);
+    }
+  }
+
+  textarea {
+    background: var(--slick-large-editor-background-color, $slick-large-editor-background-color);
+    border: 0;
+    outline: 0;
+  }
+
+  .counter {
+    float: left;
+    font-size: var(--slick-large-editor-count-font-size, $slick-large-editor-count-font-size);
+    margin-top: var(--slick-large-editor-count-margin-top, $slick-large-editor-count-margin-top);
+    .separator {
+      margin: var(--slick-large-editor-count-separator-margin, $slick-large-editor-count-separator-margin);
+    }
+  }
+}
+
+/* Slick Composite Editor Modal */
+.slick-modal-open {
+  overflow: hidden;
+}
+.slick-editor-modal {
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  background: var(--slick-editor-modal-backdrop-transition-background, $slick-editor-modal-backdrop-transition-background);
+  z-index: var(--slick-editor-modal-container-z-index, $slick-editor-modal-container-z-index);
+  transition: var(--slick-editor-modal-backdrop-transition-start, $slick-editor-modal-backdrop-transition-start);
+
+  .slick-editor-modal-content {
+    display: inline-block;
+    position: absolute;
+    border-radius: var(--slick-editor-modal-container-radius, $slick-editor-modal-container-radius);
+    font-family: var(--slick-font-family, $slick-font-family);
+    border: var(--slick-editor-modal-container-border, $slick-editor-modal-container-border);
+    margin: var(--slick-editor-modal-container-margin, $slick-editor-modal-container-margin);
+    background-color: var(--slick-editor-modal-container-bg-color, $slick-editor-modal-container-bg-color);
+    box-shadow: var(--slick-editor-modal-container-box-shadow, $slick-editor-modal-container-box-shadow);
+    width: var(--slick-editor-modal-container-width, $slick-editor-modal-container-width);
+    min-width: var(--slick-editor-modal-container-min-width, $slick-editor-modal-container-min-width);
+    top: var(--slick-editor-modal-container-top, $slick-editor-modal-container-top);
+    left: var(--slick-editor-modal-container-left, $slick-editor-modal-container-left);
+    transform: var(--slick-editor-modal-container-transform, $slick-editor-modal-container-transform);
+    transition: var(--slick-editor-modal-backdrop-transition-end, $slick-editor-modal-backdrop-transition-end);
+    transition-property: opacity,transform;
+
+    @media only screen and (min-width : 768px) {
+      &.split-view {
+        width: calc(#{$slick-editor-modal-container-width} * 2);
+      }
+      &.triple-split-view {
+        width: calc(#{$slick-editor-modal-container-width} * 3);
+      }
+    }
+
+    /** we'll triple the width only a large screen */
+    @media only screen and (max-width : 1200px) {
+      &.triple-split-view {
+        width: calc(#{$slick-editor-modal-container-width} * 2);
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      width: 100% !important;
+      margin: 0;
+      top: 0;
+    }
+
+    .reset-container {
+      width: 100%;
+      .reset-form.btn {
+        background-color: #ffffff;
+        float: right;
+      }
+    }
+
+    .btn-editor-reset,
+    .reset-form.btn,
+    .footer-buttons .btn {
+      margin: var(--slick-editor-modal-footer-btn-margin, $slick-editor-modal-footer-btn-margin);
+      height: var(--slick-editor-modal-footer-btn-height, $slick-editor-modal-footer-btn-height);
+      border: var(--slick-editor-modal-footer-btn-border, $slick-editor-modal-footer-btn-border);
+      border-radius: var(--slick-editor-modal-footer-btn-radius, $slick-editor-modal-footer-btn-radius);
+      &:hover {
+        border-color: var(--slick-editor-modal-footer-btn-border-hover, $slick-editor-modal-footer-btn-border-hover);
+      }
+      &:disabled {
+        background-color: var(--slick-button-primary-bg-color-disabled, $slick-button-primary-bg-color-disabled);
+      }
+    }
+
+    .btn-editor-reset {
+      height: var(--slick-editor-modal-editor-btn-reset-height, $slick-editor-modal-editor-btn-reset-height);
+      background-color: var(--slick-editor-modal-editor-btn-reset-bg-color, $slick-editor-modal-editor-btn-reset-bg-color);
+      margin: var(--slick-editor-modal-editor-btn-reset-margin, $slick-editor-modal-editor-btn-reset-margin);
+    }
+
+    .close {
+      cursor: pointer;
+      position: absolute;
+      float: right;
+      line-height: 0;
+      background-color: var(--slick-editor-modal-close-btn-bg-color, $slick-editor-modal-close-btn-bg-color);
+      opacity: var(--slick-editor-modal-close-btn-opacity, $slick-editor-modal-close-btn-opacity);
+      border: var(--slick-editor-modal-close-btn-border, $slick-editor-modal-close-btn-border);
+      color: var(--slick-editor-modal-close-btn-color, $slick-editor-modal-close-btn-color);
+      font-family: var(--slick-editor-modal-close-btn-font-family, $slick-editor-modal-close-btn-font-family);
+      font-size: var(--slick-editor-modal-close-btn-font-size, $slick-editor-modal-close-btn-font-size);
+      font-weight: var(--slick-editor-modal-close-btn-font-weight, $slick-editor-modal-close-btn-font-weight);
+      height: var(--slick-editor-modal-close-btn-height, $slick-editor-modal-close-btn-height);
+      margin: var(--slick-editor-modal-close-btn-margin, $slick-editor-modal-close-btn-margin);
+      padding: var(--slick-editor-modal-close-btn-padding, $slick-editor-modal-close-btn-padding);
+      width: var(--slick-editor-modal-close-btn-width, $slick-editor-modal-close-btn-width);
+      right: var(--slick-editor-modal-close-btn-right, $slick-editor-modal-close-btn-right);
+      top: var(--slick-editor-modal-close-btn-top, $slick-editor-modal-close-btn-top);
+      &:hover {
+        color: var(--slick-editor-modal-close-btn-color-hover, $slick-editor-modal-close-btn-color-hover);
+      }
+      &.outside {
+        @media only screen and (min-width: 769px) {
+          color: var(--slick-editor-modal-close-btn-outside-color, $slick-editor-modal-close-btn-outside-color);
+          &:hover {
+            color: var(--slick-editor-modal-close-btn-outside-color-hover, $slick-editor-modal-close-btn-outside-color-hover);
+          }
+          font-size: var(--slick-editor-modal-close-btn-outside-font-size, $slick-editor-modal-close-btn-outside-font-size);
+          right: var(--slick-editor-modal-close-btn-outside-right, $slick-editor-modal-close-btn-outside-right);
+          top: var(--slick-editor-modal-close-btn-outside-top, $slick-editor-modal-close-btn-outside-top);
+        }
+      }
+    }
+
+    .slick-editor-modal-title {
+      font-size: var(--slick-editor-modal-title-font-size, $slick-editor-modal-title-font-size);
+      font-weight: var(--slick-editor-modal-title-font-weight, $slick-editor-modal-title-font-weight);
+      line-height: var(--slick-editor-modal-title-line-height, $slick-editor-modal-title-line-height);
+      color: var(--slick-editor-modal-title-font-color, $slick-editor-modal-title-font-color);
+      height: var(--slick-editor-modal-title-height, $slick-editor-modal-title-height);
+      overflow: hidden auto;
+      text-align: var(--slick-editor-modal-title-text-align, $slick-editor-modal-title-text-align);
+      text-overflow: ellipsis;
+      width: calc(100% - #{$slick-editor-modal-close-btn-width} - #{$slick-editor-modal-close-btn-right});
+      white-space: nowrap;
+      &.outside {
+        width: 100%;
+      }
+    }
+
+    .slick-editor-modal-body {
+      padding: var(--slick-editor-modal-body-padding, $slick-editor-modal-body-padding);
+      min-height: var(--slick-editor-modal-body-min-height, $slick-editor-modal-body-min-height);
+      max-height: var(--slick-editor-modal-body-max-height, $slick-editor-modal-body-max-height);
+      overflow: var(--slick-editor-modal-body-overflow, $slick-editor-modal-body-overflow);
+      display: flex;
+      flex-wrap: wrap;
+
+      .slick-cell {
+        height: inherit;
+      }
+
+      .validation-summary {
+        padding: var(--slick-editor-modal-validation-summary-padding, $slick-editor-modal-validation-summary-padding);
+        color: var(--slick-editor-modal-validation-summary-color, $slick-editor-modal-validation-summary-color);
+        width: var(--slick-editor-modal-validation-summary-width, $slick-editor-modal-validation-summary-width);
+        margin-bottom: var(--slick-editor-modal-validation-summary-margin-bottom, $slick-editor-modal-validation-summary-margin-bottom);
+        font-size: var(--slick-editor-modal-validation-summary-font-size, $slick-editor-modal-validation-summary-font-size);
+        font-style: var(--slick-editor-modal-validation-summary-font-style, $slick-editor-modal-validation-summary-font-style);
+      }
+    }
+
+    .slick-editor-modal-header {
+      padding: var(--slick-editor-modal-header-padding, $slick-editor-modal-header-padding);
+      height: var(--slick-editor-modal-header-height, $slick-editor-modal-header-height);
+      border-bottom: var(--slick-editor-modal-header-border-bottom, $slick-editor-modal-header-border-bottom);
+      background-color: var(--slick-editor-modal-header-bg-color, $slick-editor-modal-header-bg-color);
+    }
+
+    .slick-editor-modal-footer {
+      background-color: var(--slick-editor-modal-footer-bg-color, $slick-editor-modal-footer-bg-color);
+      border-top: var(--slick-editor-modal-footer-border-top, $slick-editor-modal-footer-border-top);
+      min-height: var(--slick-editor-modal-footer-height, $slick-editor-modal-footer-height);
+      padding: var(--slick-editor-modal-footer-padding, $slick-editor-modal-footer-padding);
+      line-height: var(--slick-editor-modal-footer-line-height, $slick-editor-modal-footer-line-height);
+
+      .footer-buttons {
+        float: right;
+        text-align: right;
+        width: var(--slick-editor-modal-footer-buttons-width, $slick-editor-modal-footer-buttons-width);
+
+        button {
+          max-width: var(--slick-editor-modal-footer-btn-max-width, $slick-editor-modal-footer-btn-max-width);
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .saving:before {
+          height: var(--slick-editor-modal-footer-btn-saving-icon-height, $slick-editor-modal-footer-btn-saving-icon-height);
+          width: var(--slick-editor-modal-footer-btn-saving-icon-width, $slick-editor-modal-footer-btn-saving-icon-width);
+          display: var(--slick-editor-modal-footer-btn-saving-icon-display, $slick-editor-modal-footer-btn-saving-icon-display);
+          vertical-align: var(--slick-editor-modal-footer-btn-saving-icon-vertical-align, $slick-editor-modal-footer-btn-saving-icon-vertical-align);
+          margin: var(--slick-editor-modal-footer-btn-saving-icon-margin, $slick-editor-modal-footer-btn-saving-icon-margin);
+          animation: var(--slick-editor-modal-footer-btn-saving-icon-animation, $slick-editor-modal-footer-btn-saving-icon-animation);
+          content: var(--slick-editor-modal-footer-btn-saving-icon-content, $slick-editor-modal-footer-btn-saving-icon-content);
+        }
+      }
+      .footer-status-text {
+        float: left;
+        text-align: left;
+        width: var(--slick-editor-modal-footer-status-text-width, $slick-editor-modal-footer-status-text-width);
+        font-size: var(--slick-editor-modal-status-text-font-size, $slick-editor-modal-status-text-font-size);
+        color: var(--slick-editor-modal-status-text-color, $slick-editor-modal-status-text-color);
+      }
+    }
+
+    .item-details-label {
+      display: block;
+      margin: var(--slick-editor-modal-detail-label-margin, $slick-editor-modal-detail-label-margin);
+      font-size: var(--slick-editor-modal-detail-label-font-size, $slick-editor-modal-detail-label-font-size);
+      font-style: var(--slick-editor-modal-detail-label-font-style, $slick-editor-modal-detail-label-font-style);
+      font-weight: var(--slick-editor-modal-detail-label-font-weight, $slick-editor-modal-detail-label-font-weight);
+      &.invalid {
+        color: var(--slick-editor-modal-detail-label-color-invalid, $slick-editor-modal-detail-label-color-invalid);
+      }
+    }
+
+    .item-details-editor-container {
+      display: block;
+      box-sizing: border-box;
+      border: var(--slick-editor-modal-detail-container-border, $slick-editor-modal-detail-container-border);
+      border-radius: var(--slick-editor-modal-detail-container-border-radius, $slick-editor-modal-detail-container-border-radius);
+      line-height: var(--slick-editor-modal-detail-container-line-height, $slick-editor-modal-detail-container-line-height);
+      margin: var(--slick-editor-modal-detail-container-margin, $slick-editor-modal-detail-container-margin);
+      padding: var(--slick-editor-modal-detail-container-padding, $slick-editor-modal-detail-container-padding);
+
+      input {
+        height: var(--slick-editor-modal-input-editor-height, $slick-editor-modal-input-editor-height);
+        margin: var(--slick-editor-modal-input-editor-margin, $slick-editor-modal-input-editor-margin);
+        border: var(--slick-editor-modal-input-editor-border, $slick-editor-modal-input-editor-border);
+        padding: var(--slick-editor-modal-input-editor-padding, $slick-editor-modal-input-editor-padding);
+        &:focus {
+          border-color: var(--slick-text-editor-focus-border-color, $slick-text-editor-focus-border-color);
+          box-shadow: var(--slick-text-editor-focus-box-shadow, $slick-text-editor-focus-box-shadow);
+        }
+        &:disabled {
+          background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+        }
+      }
+      .input-group {
+        display: flex;
+        position: relative;
+        height: var(--slick-editor-modal-input-editor-height, $slick-editor-modal-input-editor-height);
+        input {
+          height: var(--slick-editor-modal-input-editor-height, $slick-editor-modal-input-editor-height);
+        }
+      }
+      .slick-large-editor-text {
+        border: var(--slick-editor-modal-large-editor-border, $slick-editor-modal-large-editor-border);
+        border-radius: var(--slick-editor-modal-large-editor-border-radius, $slick-editor-modal-large-editor-border-radius);
+        padding: var(--slick-editor-modal-large-editor-padding, $slick-editor-modal-large-editor-padding);
+        &:focus-within {
+          border-color: var(--slick-text-editor-focus-border-color, $slick-text-editor-focus-border-color);
+          box-shadow: var(--slick-text-editor-focus-box-shadow, $slick-text-editor-focus-box-shadow);
+        }
+        textarea {
+          width: 100%;
+          height: 100%;
+          &:disabled {
+            background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+          }
+        }
+        .editor-footer {
+          height: var(--slick-editor-modal-large-editor-footer-height, $slick-editor-modal-large-editor-footer-height);
+          line-height: var(--slick-editor-modal-large-editor-footer-line-height, $slick-editor-modal-large-editor-footer-line-height);
+          color: var(--slick-editor-modal-large-editor-count-color, $slick-editor-modal-large-editor-count-color);
+          .counter {
+            font-size: var(--slick-editor-modal-large-editor-count-font-size, $slick-editor-modal-large-editor-count-font-size);
+            margin: var(--slick-editor-modal-large-editor-count-margin, $slick-editor-modal-large-editor-count-margin);
+          }
+        }
+
+        &.invalid {
+          border: var(--slick-editor-modal-detail-container-border-invalid, $slick-editor-modal-detail-container-border-invalid);
+        }
+        &:disabled, &.disabled {
+          background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+        }
+      }
+      button.ms-choice {
+        height: var(--slick-editor-modal-multiselect-editor-height, $slick-editor-modal-multiselect-editor-height);
+        &:disabled {
+          background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+        }
+      }
+      .checkbox-editor-container {
+        padding: var(--slick-editor-modal-checkbox-editor-padding, $slick-editor-modal-checkbox-editor-padding);
+        border: var(--slick-editor-modal-checkbox-editor-border, $slick-editor-modal-checkbox-editor-border);
+        border-radius: var(--slick-editor-modal-checkbox-editor-border-radius, $slick-editor-modal-checkbox-editor-border-radius);
+        height: var(--slick-editor-modal-input-editor-height, $slick-editor-modal-input-editor-height);
+        input {
+          height: inherit;
+        }
+        &.disabled {
+          background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+        }
+      }
+
+      .autocomplete-container.input-group,
+      .flatpickr.input-group {
+        height: var(--slick-date-editor-height, $slick-date-editor-height);
+        .input-group-btn {
+          min-width: 28px;
+          .btn {
+            min-width: 28px;
+            border-left: var(--slick-editor-modal-close-btn-border-left, $slick-editor-modal-close-btn-border-left);
+            height: var(--slick-editor-modal-input-editor-height, $slick-editor-modal-input-editor-height);
+            border-radius: var(--slick-editor-modal-close-btn-border-radius, $slick-editor-modal-close-btn-border-radius);
+          }
+        }
+      }
+      .flatpickr-input.form-control, .flatpickr-alt-input[readonly] {
+        background-color: var(--slick-flatpickr-bgcolor, $slick-flatpickr-bgcolor);
+        &:disabled {
+          background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+          cursor: initial;
+        }
+      }
+      .slider-value {
+        height: var(--slick-editor-modal-slider-editor-value-height, $slick-editor-modal-slider-editor-value-height);
+        min-width: 28px;
+        .input-group-text {
+          min-height: var(--slick-editor-modal-slider-editor-value-min-height, $slick-editor-modal-slider-editor-value-min-height);
+          min-width: 28px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      &.modified {
+        input, .slick-large-editor-text, .ms-choice, .checkbox-editor-container {
+          border: var(--slick-editor-modal-detail-container-border-modified, $slick-editor-modal-detail-container-border-modified);
+          border-width: var(--slick-editor-modal-detail-container-border-width-modified, $slick-editor-modal-detail-container-border-width-modified);
+        }
+      }
+      &.invalid {
+        input, .slick-large-editor-text {
+          border: var(--slick-editor-modal-detail-container-border-invalid, $slick-editor-modal-detail-container-border-invalid);
+        }
+      }
+      &.disabled {
+        background-color: var(--slick-editor-input-disabled-color, $slick-editor-input-disabled-color);
+      }
+    }
+
+    .item-details-validation {
+      color: var(--slick-editor-modal-validation-color, $slick-editor-modal-validation-color);
+      font-size: var(--slick-editor-modal-validation-font-size, $slick-editor-modal-validation-font-size);
+      font-style: var(--slick-editor-modal-validation-font-style, $slick-editor-modal-validation-font-style);
+      font-weight: var(--slick-editor-modal-validation-font-weight, $slick-editor-modal-validation-font-weight);
+      line-height: var(--slick-editor-modal-validation-line-height, $slick-editor-modal-validation-line-height);
+      margin-left: var(--slick-editor-modal-validation-margin-left, $slick-editor-modal-validation-margin-left);
+      min-height: var(--slick-editor-modal-validation-min-height, $slick-editor-modal-validation-min-height);
+    }
+  }
+}

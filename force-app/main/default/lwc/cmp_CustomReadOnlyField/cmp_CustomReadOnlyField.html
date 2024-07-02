@@ -1,0 +1,40 @@
+<!--
+ * File Name   : cmp_CustomReadOnlyField.html
+ * Author      : TungDX13
+ * Date        : 2024-01-24
+ * Description : Screen Flow Enhencenment - Custom Read Only Field
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ==================================================================
+ * Ver        Date               Author         Modification
+ * ==================================================================
+   1.0     2024-01-24            TungDX13       Create           
+-->
+<template>
+    <template lwc:if={_isCheckboxField}>
+        <lightning-input type={fieldType} label={fieldLabel} checked={fieldValue} disabled="true"></lightning-input>
+    </template>
+    <template lwc:elseif={_isDateField}>
+        <lightning-input type="date" label={fieldLabel} value={fieldValue} 
+            disabled="true"></lightning-input>
+    </template>
+    <template lwc:elseif={_isDateTimeField}>
+        <lightning-input type="datetime" label={fieldLabel} value={fieldValue} 
+            disabled="true"></lightning-input>
+    </template>
+    <template lwc:elseif={_isNumberField}>
+        <lightning-input type="number" label={fieldLabel} value={fieldValue} 
+            disabled="true"></lightning-input>
+    </template>
+    <template lwc:elseif={_isPercentField}>
+        <lightning-input type="text" label={fieldLabel} value={fieldValue} disabled="true"></lightning-input>
+    </template>
+    <template lwc:elseif={_isCurrencyField}>
+        <lightning-input type="number" formatter="currency" label={fieldLabel} value={fieldValue} 
+        disabled="true"></lightning-input>
+    </template>
+    <template lwc:elseif={_isTextField}>
+        <lightning-input type="text" label={fieldLabel} value={fieldValue} 
+            disabled="true"></lightning-input>
+    </template>
+</template>

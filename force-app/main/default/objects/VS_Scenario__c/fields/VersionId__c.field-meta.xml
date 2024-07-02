@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VersionId__c</fullName>
+    <description>버전 ID는 number type이므로 COI request 번호를 넘버로 채번해서 version id에 넣고 IF 해주면 될듯.</description>
+    <externalId>false</externalId>
+    <label>Version Id</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

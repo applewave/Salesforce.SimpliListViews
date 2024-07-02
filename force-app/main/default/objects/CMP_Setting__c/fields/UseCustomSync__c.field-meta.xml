@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UseCustomSync__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Whether to use custom sync or not</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Whether to use custom sync or not</inlineHelpText>
+    <label>Use Custom Sync</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

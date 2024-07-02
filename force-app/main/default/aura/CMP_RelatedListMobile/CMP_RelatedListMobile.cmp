@@ -1,0 +1,126 @@
+<!-- 
+ * File Name    : CMP_RelatedListMobile
+ * Author       : sy.lee
+ * Date         : 2024-06-21
+ * Description  :  
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ===============================================================
+ * Ver      Date           Author              Modification
+ * ===============================================================
+   1.0      2024-06-21     sy.lee              Create   
+                      
+-->
+<aura:component description="RelatedListMobile" extends="c:CMP_RelatedListHelper" controller="CMP_RelatedListController" access="global"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:isUrlAddressable">
+
+    <!-- Attributes ============================ -->
+    <aura:attribute name="isLoading" type="Boolean" description="loading" default="true"/>
+
+    <aura:attribute name="recordId" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="result" type="Object" access="public" description="현재 대상 개체"/>
+
+    <aura:attribute name="currentObjectApi" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="currentObjectFields" type="String" access="public" description="추가적으로 쿼리가 필요한 필드"/>
+    <aura:attribute name="targetObjectApi" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="fields" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="condition" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="sortedBy" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="sortedDirection" type="String" access="public" description="현재 대상 개체" default="asc"/>
+    <aura:attribute name="limitCount" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="isWithOutSharing" type="Boolean" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="needAccessCheck" type="Boolean" access="public" description="현재 대상 개체"/>
+
+    <aura:attribute name="applyApprovalLock" type="Boolean" access="public" description="현재 대상 개체의 Approval Lock 여부에 따라 버튼 및 row action 활성화 유무 설정"/>
+
+    <aura:attribute name="data" type="List" access="public" description="현재 대상 개체"/>
+
+    <aura:attribute name="buttonComponentName" type="String" access="public" description="동적으로 생성할 버튼 컴포넌트 이름"/>
+    <aura:attribute name="buttons" type="Aura.Component[]" access="public" description="동적으로 생성된 버튼"/>
+
+    <aura:attribute name="title" type="String" access="public" description="제목 (커스텀 라벨의 경우 Label.xxx 사용) - 없는 경우는 개체의 라벨 사용"/>
+    <aura:attribute name="sortedByLabel" type="String" access="public" description="정렬 필드 라벨"/>
+    <aura:attribute name="itemCount" type="String" access="public" description="현재 레코드 카운트"/>
+
+    <aura:attribute name="iconName" type="String" access="public" description="아이콘 이름"/>
+    <aura:attribute name="isPhone" type="Boolean" />
+
+    <!-- Handler =============================== -->
+    <aura:handler name="init" value="{!this}" action="{!c.fnInit}"/>
+
+    <!-- Event ================================= -->
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:navigation aura:id="navService"/>
+
+    <!-- 모바일 버튼이 필요한 경우, 아래 형태로 만들어서 사용한다. 별도로 제공하진 않음-->
+    <!--<div>
+        <ul class="utility__icons slds-grid slds-wrap slds-align_absolute-center" >
+            &lt;!&ndash; Upload &ndash;&gt;
+            <li class="site-icon-width-container" style="padding-right: 1rem; padding-left:1rem; cursor: pointer;">
+                <figure>
+                    <span class="slds-icon_container slds-align_absolute-center slds-icon__svg&#45;&#45;default">
+                        <lightning:icon iconName="action:new" size="x-small"></lightning:icon>
+                    </span>
+                    <figcaption class="slds-p-top_x-small slds-text-body_small icon-figcaption slds-align_absolute-center">
+                        asdfasdfasdf
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </div>-->
+
+    {!v.buttons}
+
+    <div>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="12">
+                <div class="slds-media">
+                    <!-- Icon -->
+                    <div class="slds-media__figure">
+                        <lightning:icon iconName="{!v.iconName}" size="large"></lightning:icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <!-- Title -->
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="{!v.title}">{!v.title}</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <!-- Info -->
+                        <!--<p class="slds-text-body_regular">{!v.itemCount}, {!v.sortedByLabel}</p>-->
+                        <p class="slds-text-body_regular">{!v.itemCount}</p>
+                    </div>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem size="12" padding="around-small" class="white">
+                <aura:iteration items="{!v.data}" var="record">
+                    <div onclick="{!c.fnNavigateToRecord}" data-recordid="{!record.recordId}">
+                        <lightning:layout multipleRows="true">
+                            <lightning:layoutItem size="12">
+                            <span class="slds-text-heading_small" style="font-weight: bold;">
+                                {!record.header}
+                            </span>
+                            </lightning:layoutItem>
+                            <aura:iteration items="{!record.fieldList}" var="field">
+                                <lightning:layoutItem size="3">
+                                <span class="slds-text-body_small">
+                                   {!field.label}
+                                </span>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="9">
+                                <span class="slds-text-body_small">
+                                   {!field.value}
+                                </span>
+                                </lightning:layoutItem>
+                            </aura:iteration>
+                        </lightning:layout>
+                    </div>
+                    <hr/>
+                </aura:iteration>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

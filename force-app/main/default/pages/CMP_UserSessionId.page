@@ -1,0 +1,7 @@
+<!--
+ - Created by sy.lee on 2024-06-24.
+ -->
+
+<apex:page id="CMP_UserSessionId">
+    Start{!$Api.Session_ID}End
+</apex:page>

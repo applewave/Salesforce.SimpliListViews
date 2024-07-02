@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TypeDetail__c</fullName>
+    <externalId>false</externalId>
+    <label>Type Detail</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>USD</fullName>
+                <default>false</default>
+                <label>USD</label>
+            </value>
+            <value>
+                <fullName>Soft</fullName>
+                <default>false</default>
+                <label>Soft</label>
+            </value>
+            <value>
+                <fullName>Series</fullName>
+                <default>false</default>
+                <label>Series</label>
+            </value>
+            <value>
+                <fullName>Repeat</fullName>
+                <default>false</default>
+                <label>Repeat</label>
+            </value>
+            <value>
+                <fullName>EA</fullName>
+                <default>false</default>
+                <label>EA</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>개발비</controllingFieldValue>
+            <controllingFieldValue>ED&amp;D-UNIT</controllingFieldValue>
+            <valueName>USD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>금형비</controllingFieldValue>
+            <valueName>Soft</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>금형비</controllingFieldValue>
+            <valueName>Series</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>금형비</controllingFieldValue>
+            <valueName>Repeat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PLC Volume</controllingFieldValue>
+            <controllingFieldValue>Amortizing volume</controllingFieldValue>
+            <valueName>EA</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

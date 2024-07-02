@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>개발비</fullName>
+                <default>false</default>
+                <label>개발비</label>
+            </value>
+            <value>
+                <fullName>금형비</fullName>
+                <default>false</default>
+                <label>금형비</label>
+            </value>
+            <value>
+                <fullName>PLC Volume</fullName>
+                <default>false</default>
+                <label>PLC Volume</label>
+            </value>
+            <value>
+                <fullName>Amortizing volume</fullName>
+                <default>false</default>
+                <label>Amortizing volume</label>
+            </value>
+            <value>
+                <fullName>ED&amp;D-UNIT</fullName>
+                <default>false</default>
+                <label>ED&amp;D-UNIT</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

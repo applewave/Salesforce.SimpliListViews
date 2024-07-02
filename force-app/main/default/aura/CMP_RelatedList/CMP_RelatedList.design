@@ -1,0 +1,49 @@
+<!-- 
+ * File Name    : CMP_RelatedList.design
+ * Author       : sy.lee
+ * Date         : 2024-04-03
+ * Description  :  
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ===============================================================
+ * Ver      Date           Author              Modification
+ * ===============================================================
+   1.0      2024-04-03     sy.lee              Create   
+                      
+-->
+<design:component>
+    <design:attribute name="relatedListId" label="Related List Id (Unique)" required="true"/>
+    <design:attribute name="currentObjectApi" label="현재 Object API" required="true"/>
+    <design:attribute name="targetObjectApi" label="조회 대상 Object API" required="true"/>
+    <design:attribute name="fields" label="조회 대상 필드 (콤마로 구분)" required="true"/>
+    <design:attribute name="condition" label="WHERE 조건 (현재 레코드 아이디 참조는 :recordId 사용)" required="true"/>
+    <design:attribute name="sortedBy" label="정렬 필드" required="true" default="Name"/>
+    <design:attribute name="sortedDirection" label="정렬 방식 (asc / desc)" required="true" default="asc"/>
+    <design:attribute name="limitCount" label="레코드 조회 개수" required="true" default="5"/>
+    <design:attribute name="isWithOutSharing" label="without sharing 적용" default="false"/>
+    <!--    <design:attribute name="needAccessCheck" label="권한 체크 여부" required="true" default="false"/>-->
+
+    <design:attribute name="iconName" label="아이콘 이름" default="standard:account"/>
+    <design:attribute name="title" label="제목 (커스텀 라벨의 경우 Label.xxx 사용) - 없는 경우는 개체의 라벨 사용" />
+    <design:attribute name="useStandardNew" label="표준 New 기능 사용" />
+    <design:attribute name="useExport" label="Excel - Export 사용 여부" />
+    <design:attribute name="buttonComponentName" label="버튼 컴포넌트 이름" />
+
+    <design:attribute name="hideCheckboxColumn" label="체크박스 표시 여부" default="true"/>
+    <design:attribute name="maxRowSelection" label="선택 가능한 레코드 수 (체크박스 표시 여부가 FALSE인 경우는 적용되지 않음)" dataSource="1,N" default="N"/>
+    <design:attribute name="showRowNumberColumn" label="행 번호 표시" default="true"/>
+
+    <!--    <design:attribute name="applyApprovalLock" label="현재 대상 개체의 Approval Lock 여부에 따라 버튼 및 row action 활성화 유무 설정" />-->
+    <design:attribute name="useEditRowAction" label="Row Action의 Edit 사용" default="true"/>
+    <design:attribute name="useDeleteRowAction" label="Row Action의 Delete 사용" default="true"/>
+    <design:attribute name="useShowDetailRowAction" label="Row Action의 Show Detail 사용" default="true"/>
+
+    <design:attribute name="useStandardViewAll" label="표준 View All 기능 사용" default="false"/>
+    <design:attribute name="relationShipName" label="관계 이름 (표준 View All 사용시)" />
+    <design:attribute name="isInfinityLoading" label="Infinity Loading 적용 (표준 View All 미사용시)" default="false"/>
+    <design:attribute name="applyRefresh" label="레코드 디테일 변경시, 리프레시 여부"/>
+
+    <design:attribute name="mobileTest" label="모바일 테스트 하는 경우 체크"/>
+
+
+</design:component>

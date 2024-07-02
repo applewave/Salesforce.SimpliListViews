@@ -1,0 +1,26 @@
+h1 {
+  font-size: xx-large;
+}
+
+.totalContainer {
+  display: flex;
+  align-items: flex-start; 
+}
+
+.totalItem {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left: 1%;
+  border-bottom: 1px solid black; 
+}
+
+.totalItem .title {
+  font-weight: bold; /* 제목 글자를 볼드체로 설정 */
+}
+
+.totalItem .amount {
+  margin-top: 0px; /* 금액과 제목 사이의 간격을 조정 */
+  font-size: 14px;
+  font-weight: bold;
+}

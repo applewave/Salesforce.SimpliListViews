@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>l_AwardApproval__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>salesplan이 수주품의에 의해 생성된 경우 그 lookup 관계를 표시 한다.</description>
+    <externalId>false</externalId>
+    <label>Award Approval</label>
+    <referenceTo>VS_AwardApproval__c</referenceTo>
+    <relationshipLabel>SalesPlans</relationshipLabel>
+    <relationshipName>SalesPlans</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

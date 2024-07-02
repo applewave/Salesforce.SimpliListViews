@@ -1,0 +1,36 @@
+<!-- 
+ * File Name    : CMP_LanguageSwitcher
+ * Author       : sy.lee
+ * Date         : 2024-04-03
+ * Description  :  
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ===============================================================
+ * Ver      Date           Author              Modification
+ * ===============================================================
+   1.0      2024-04-03     sy.lee              Create   
+                      
+-->
+<aura:component description="CMP_LanguageSwitcher" controller="CMP_LanguageSwitcherController"
+                implements="force:appHostable,force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+    <!-- Attributes ============================ -->
+    <aura:attribute name="isLoading" type="Boolean" description="loading" default="true"/>
+    <aura:attribute name="languageList" type="List" />
+
+    <!-- Handler =============================== -->
+    <aura:handler name="init" value="{!this}" action="{!c.fnInit}"/>
+
+    <!-- Event ================================= -->
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+
+    <!--<lightning:button label="한국어" value="ko" aura:id="ko" onclick="{!c.fnChangeLanguage}"></lightning:button>
+    <lightning:button label="영어" value="en_US" aura:id="en_US" onclick="{!c.fnChangeLanguage}"></lightning:button>-->
+
+    <aura:iteration items="{!v.languageList}" var="language">
+        <lightning:button class="slds-m-top_small" label="{!language.label}" value="{!language.value}" aura:id="{!language.value}" onclick="{!c.fnChangeLanguage}"></lightning:button>
+    </aura:iteration>
+
+
+</aura:component>

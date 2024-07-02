@@ -1,0 +1,299 @@
+<!-- 
+ * File Name    : RelatedListViewAllAura
+ * Author       : sy.lee
+ * Date         : 2023-11-21
+ * Description  :  
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ===============================================================
+ * Ver      Date           Author              Modification
+ * ===============================================================
+   1.0      2023-11-21     sy.lee              Create   
+                      
+-->
+<aura:component description="CMP_RelatedListViewAllAura" controller="CMP_RelatedListViewAllAuraController" extends="c:CMP_RelatedListHelper"
+                implements="lightning:isUrlAddressable,forceCommunity:availableForAllPageTypes">
+
+    <aura:import library="lightning:confirm" property="LightningConfirm" />
+
+    <!-- Attributes ============================ -->
+    <aura:attribute name="isLoading" type="Boolean" description="loading" default="true"/>
+    <aura:attribute name="result" type="Object" access="public" description="현재 대상 개체"/>
+
+    <aura:attribute name="recordId" type="String" access="public" description="현재 대상 개체"/>
+
+    <aura:attribute name="currentObjectApi" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="currentObjectFields" type="String" access="public" description="추가적으로 쿼리가 필요한 필드"/>
+    <aura:attribute name="targetObjectApi" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="fields" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="condition" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="limitCount" type="String" access="public" description="현재 대상 개체" default="50"/>
+    <aura:attribute name="isWithOutSharing" type="Boolean" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="needAccessCheck" type="Boolean" access="public" description="현재 대상 개체"/>
+
+    <!-- Header -->
+    <aura:attribute name="iconName" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="title" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="recordCount" type="String" access="public" default="(0)" description="현재 대상 개체"/>
+    <aura:attribute name="buttons" type="Aura.Component[]" access="public" description="동적으로 생성된 버튼"/>
+    <aura:attribute name="itemCount" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="sortedByLabel" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="useExport" type="Boolean" access="public" description="Excel 다운로드 사용 여부" />
+
+    <aura:attribute name="applyApprovalLock" type="Boolean" access="public" description="현재 대상 개체의 Approval Lock 여부에 따라 버튼 및 row action 활성화 유무 설정"/>
+
+    <!-- Data Table -->
+    <aura:attribute name="data" type="List" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="columns" type="List" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="columnMap" type="List" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="hideCheckboxColumn" type="Boolean" access="public" default="false" description="현재 대상 개체"/>
+    <aura:attribute name="sortedBy" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="sortedDirection" type="String" access="public" description="현재 대상 개체" default="asc"/>
+    <aura:attribute name="maxRowSelection" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="showRowNumberColumn" type="Boolean" access="public" description="현재 대상 개체"/>
+
+    <!-- Data Table - Additional Attributes -->
+    <aura:attribute name="buttonComponentName" type="String" access="public" default="true" description="동적으로 생성할 버튼 컴포넌트 이름"/>
+    <aura:attribute name="useEditRowAction" type="Boolean" access="public" default="true" description="Edit Row Action 사용 여부"/>
+    <aura:attribute name="useShowDetailRowAction" type="Boolean" access="public" default="true" description="Show Detail Row Action 사용 여부"/>
+    <aura:attribute name="useDeleteRowAction" type="Boolean" access="public" default="true" description="Delete Row Action 사용 여부"/>
+    <aura:attribute name="sortedByMap" type="Object" access="public" default="true" description="현재 대상 개체"/>
+
+
+    <aura:attribute name="query" type="String" access="public" description="현재 대상 개체"/>
+    <aura:attribute name="countQuery" type="String" access="public" description="현재 대상 개체"/>
+
+
+    <aura:attribute name="relationShipName" type="String" access="public" description="현재 대상 개체"/>
+
+    <aura:attribute name="totalRecordList" type="List" access="public" description="전체 레코드 목록"/>
+
+    <aura:attribute name="isInfinityLoading" type="Boolean" access="public" description="View All - Infinity Loading 적용"/>
+
+
+    <!-- Handler =============================== -->
+    <aura:handler name="init" value="{!this}" action="{!c.fnInit}"/>
+
+<!--    <aura:handler name="sampleComponentEvent" event="c:myevent" action="{!c.aa}"/>-->
+<!--    <aura:handler event="c:appEvent" action="{!c.handleApplicationEvent}"/>-->
+
+    <!-- Event ================================= -->
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+
+<!-- Communtiy ==================================================================================================== -->
+    <aura:if isTrue="{!v.result.isCommunity}">
+        <div class="container community">
+            <div class="slds-page-header--object-home slds-page-header_joined slds-page-header_bleed slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate firstHeaderRow">
+                        <div class="slds-media slds-no-space slds-grow">
+                            <div class="slds-media__body slds-align-middle">
+                                <div>
+                                    <nav role="navigation">
+                                        <lightning:breadcrumbs>
+                                            <lightning:breadcrumbs>
+                                                <lightning:breadcrumb label="{!v.result.currentObject.labelPlural}" href="{!v.orgDomain + 'recordlist/' + v.result.currentObject.name +'/Default'}"/>
+                                                <lightning:breadcrumb label="{!v.result.currentObject.record.Name}" href="{!v.orgDomain + 'detail/' + v.result.currentObject.record.Id}"/>
+                                            </lightning:breadcrumbs>
+                                        </lightning:breadcrumbs>
+                                    </nav>
+                                    <h1 class="slds-page-header__title listViewTitle slds-truncate">
+                                        {!v.title}
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small test-lvmForceActionsContainer slds-page-header__controls">
+                        &nbsp;
+                        {!v.buttons}
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-align-bottom">
+                        <p class="slds-text-body_small">
+                            <div style="var(--lwc-colorTextPlaceholder,#5A5A5A);">
+                                {!v.itemCount} • {!v.sortedByLabel}
+                            </div>
+                        </p>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-grid slds-align-bottom">
+                        <div class="test-listViewSettingsMenu slds-m-left_xx-small forceListViewSettingsMenu">
+                            <lightning:buttonMenu alternativeText="Show menu" variant="border-filled" iconName="utility:settings" menuAlignment="right" onselect="{!c.fnClickMenu}" tooltip="{!$Label.c.CMP_CR_Lab_ListViewControls}">
+                                <lightning:menuSubheader label="{!$Label.c.CMP_CR_Lab_ListViewControls}"/>
+                                <lightning:menuItem value="ResetColumnWidth" label="{!$Label.c.CMP_CR_Btn_ResetColumnWidths}" />
+                            </lightning:buttonMenu>
+                            &nbsp;
+                            <lightning:buttonIcon iconName="utility:refresh" alternativeText="Refresh" title="Refresh" class="white" onclick="{!c.fnRefresh}" disabled="{!v.isLoading}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <lightning:layout>
+                <lightning:layoutItem size="12">
+
+                    <aura:if isTrue="{!v.isLoading}">
+                        <lightning:spinner alternativeText="Loading" variant="brand"/>
+                    </aura:if>
+
+                    <c:cmp_Table aura:id="communityTable" keyField="Id"
+                             data="{!v.data}"
+                             columns="{!v.columns}"
+                             hideCheckboxColumn="{!!v.hideCheckboxColumn}"
+                             maxRowSelection="{!v.maxRowSelection}"
+                             sortedBy="{!v.sortedBy}"
+                             sortedDirection="{!v.sortedDirection}"
+                             onsort="{!c.fnSort}"
+                             enableInfiniteLoading="{!v.isInfinityLoading}"
+                             onloadmore="{!c.fnLoadmore}"
+                             columnWidthsMode="auto"
+                             maxColumnWidth="4000"
+                             minColumnWidth="120"
+                             onrowaction="{!c.fnRowAction}">
+                    </c:cmp_Table>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </aura:if>
+
+<!-- Internal ===================================================================================================== -->
+    <aura:if isTrue="{!!v.result.isCommunity}">
+        <div class="container" style="border-bottom: var(--lwc-borderWidthThin) solid var(--lwc-cardColorBorder);">
+            <div class="slds-page-header slds-page-header_related-list">
+                <div class="slds-page-header__row">
+
+                    <!--<div class="slds-page-header__col-title">
+                        <nav role="navigation">
+                            <div class="slds-page-header__col-controls">
+                                <lightning:icon iconName="{!v.iconName}" size="small"></lightning:icon>
+                                <lightning:breadcrumbs>
+                                    <lightning:breadcrumbs>
+                                        <lightning:breadcrumb label="{!v.result.currentObject.labelPlural}" href="{!'/lightning/o/' + v.result.currentObject.name +'/home'}"/>
+                                        <lightning:breadcrumb label="{!v.result.currentObject.record.Name}" href="{!'/lightning/r/' + v.result.currentObject.record.Id + '/view'}"/>
+                                    </lightning:breadcrumbs>
+                                </lightning:breadcrumbs>
+                            </div>
+                        </nav>
+                        <div class="slds-media">
+                            <div class="slds-media__body">
+                                <div class="slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                        &lt;!&ndash; Title &ndash;&gt;
+                                        <h1>
+                                        <span class="slds-page-header__title slds-truncate" title="{!v.title}">
+                                            {!v.title}
+                                        </span>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="slds-page-header__col-title slds-grid">
+                        <div class="slds-has-flexi-truncate" style="flex-grow: 1;">
+                            <div class="slds-media slds-no-space slds-grow">
+                                <lightning:icon iconName="{!v.iconName}" size="small" class="slds-m-right_small"></lightning:icon>
+                                <div class="slds-media__body slds-align-middle" style="margin-top: -3px;">
+                                    <nav role="navigation">
+                                        <lightning:breadcrumbs>
+                                            <lightning:breadcrumbs>
+                                                <lightning:breadcrumb label="{!v.result.currentObject.labelPlural}" href="{!'/lightning/o/' + v.result.currentObject.name +'/home'}"/>
+                                                <lightning:breadcrumb label="{!v.result.currentObject.record.Name}" href="{!'/lightning/r/' + v.result.currentObject.record.Id + '/view'}"/>
+                                            </lightning:breadcrumbs>
+                                        </lightning:breadcrumbs>
+                                    </nav>
+                                    <div class="slds-media">
+                                        <div class="slds-media__body">
+                                            <div class="slds-page-header__name">
+                                                <div class="slds-page-header__name-title">
+                                                    <!-- Title -->
+                                                    <h1 style="margin: 0; padding: 0;">
+                                                        <span class="slds-page-header__title slds-truncate" title="{!v.title}">
+                                                            {!v.title}
+                                                        </span>
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actionsWrapper slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small">
+
+                        </div>
+                    </div>
+
+
+                    <!-- Button -->
+                    <div class="slds-page-header__col-actions">
+                        <div class="slds-page-header__control">
+                            <!-- Buttons -->
+                            <!--<lightning:buttonGroup>
+
+                                <aura:if isTrue="{#v.useStandardNew}">
+                                    <lightning:button label="New1" onclick="{!c.fnStandardNew}" disabled="{!v.isLoading}"/>
+                                </aura:if>
+
+                                {!v.buttons}
+                            </lightning:buttonGroup>-->
+                            <aura:if isTrue="{!v.useExport}">
+                                <lightning:button label="Export" onclick="{!c.fnExport}"></lightning:button>
+                            </aura:if>
+                            &nbsp;
+                            {!v.buttons}
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-align-bottom">
+                        <p class="slds-text-body_small">
+                            {!v.itemCount} • {!v.sortedByLabel}
+                        </p>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-grid slds-align-bottom slds-shrink"></div>
+                    <div class="slds-col slds-no-flex slds-grid slds-align-bottom">
+                        <lightning:buttonMenu alternativeText="Show menu" variant="border-filled" iconName="utility:settings" menuAlignment="right" onselect="{!c.fnClickMenu}" tooltip="{!$Label.c.CMP_CR_Lab_ListViewControls}">
+                            <lightning:menuSubheader label="{!$Label.c.CMP_CR_Lab_ListViewControls}"/>
+                            <lightning:menuItem value="ResetColumnWidth" label="{!$Label.c.CMP_CR_Btn_ResetColumnWidths}" />
+                        </lightning:buttonMenu>
+                        &nbsp;
+                        &nbsp;
+                        <lightning:buttonIcon iconName="utility:refresh" alternativeText="Refresh" title="Refresh" class="white" onclick="{!c.fnRefresh}" disabled="{!v.isLoading}"/>
+                    </div>
+                </div>
+            </div>
+
+            <lightning:layout>
+                <lightning:layoutItem size="12">
+                    <div style="height:73vh; border: var(--lwc-borderWidthThin,1px) solid var(--slds-g-color-border-base-1, var(--lwc-pageHeaderColorBorder,rgb(201, 201, 201)));">
+                        <aura:if isTrue="{!v.isLoading}">
+                            <lightning:spinner alternativeText="Loading" variant="brand"/>
+                        </aura:if>
+
+                        <c:cmp_Table aura:id="table" keyField="Id"
+                                 data="{!v.data}"
+                                 columns="{!v.columns}"
+                                 hideCheckboxColumn="{!!v.hideCheckboxColumn}"
+                                 maxRowSelection="{!v.maxRowSelection}"
+                                 columnWidthsMode="auto"
+                                 minColumnWidth="120"
+                                 maxColumnWidth="4000"
+                                 sortedBy="{!v.sortedBy}"
+                                 sortedDirection="{!v.sortedDirection}"
+                                 onsort="{!c.fnSort}"
+                                 enableInfiniteLoading="{!v.isInfinityLoading}"
+                                 onloadmore="{!c.fnLoadmore}"
+                                 onrowaction="{!c.fnRowAction}">
+                        </c:cmp_Table>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+
+    </aura:if>
+
+</aura:component>

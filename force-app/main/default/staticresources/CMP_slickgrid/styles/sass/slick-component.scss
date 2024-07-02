@@ -1,0 +1,212 @@
+/* pagination/pagination variables */
+@import './variables';
+
+// ----------------------------------------------
+// Slick Footer Component
+// ----------------------------------------------
+
+.slick-custom-footer {
+  color: var(--slick-footer-text-color, $slick-footer-text-color);
+  padding: var(--slick-footer-padding, $slick-footer-padding);
+  background-color: var(--slick-footer-bg-color, $slick-footer-bg-color);
+  font-size: var(--slick-footer-font-size, $slick-footer-font-size);
+  font-style: var(--slick-footer-font-style, $slick-footer-font-style);
+  font-weight: var(--slick-footer-font-weight, $slick-footer-font-weight);
+  height: var(--slick-footer-height, $slick-footer-height);
+
+  .left-footer {
+    color: var(--slick-footer-left-text-color, $slick-footer-left-text-color);
+    font-style: var(--slick-footer-left-font-style, $slick-footer-left-font-style);
+    font-weight: var(--slick-footer-left-font-weight, $slick-footer-left-font-weight);
+    text-align: var(--slick-footer-left-text-align, $slick-footer-left-text-align);
+    padding: var(--slick-footer-left-padding, $slick-footer-left-padding);
+    width: var(--slick-footer-left-width, $slick-footer-left-width);
+    float: var(--slick-footer-left-float, $slick-footer-left-float);
+  }
+
+  .right-footer {
+    color: var(--slick-footer-right-text-color, $slick-footer-right-text-color);
+    font-style: var(--slick-footer-right-font-style, $slick-footer-right-font-style);
+    font-weight: var(--slick-footer-right-font-weight, $slick-footer-right-font-weight);
+    text-align: var(--slick-footer-right-text-align, $slick-footer-right-text-align);
+    padding: var(--slick-footer-right-padding, $slick-footer-right-padding);
+    width: var(--slick-footer-right-width, $slick-footer-right-width);
+    float: var(--slick-footer-right-float, $slick-footer-right-float);
+    &.metrics .separator {
+      margin: var(--slick-footer-right-separator-margin, $slick-footer-right-separator-margin);
+    }
+  }
+}
+
+
+// ----------------------------------------------
+// Slick Empty Data Warning Component
+// ----------------------------------------------
+
+.slick-empty-data-warning {
+  position: relative;
+  color: var(--slick-empty-data-warning-color, $slick-empty-data-warning-color);
+  font-family: var(--slick-empty-data-warning-font-family, $slick-empty-data-warning-font-family);
+  font-size: var(--slick-empty-data-warning-font-size, $slick-empty-data-warning-font-size);
+  font-style: var(--slick-empty-data-warning-font-style, $slick-empty-data-warning-font-style);
+  line-height: var(--slick-empty-data-warning-line-height, $slick-empty-data-warning-line-height);
+  margin: var(--slick-empty-data-warning-margin, $slick-empty-data-warning-margin);
+  padding: var(--slick-empty-data-warning-padding, $slick-empty-data-warning-padding);
+  z-index: var(--slick-empty-data-warning-z-index, $slick-empty-data-warning-z-index);
+}
+
+
+// ----------------------------------------------
+// Slick Pagination Component
+// ----------------------------------------------
+
+.slick-pagination {
+  list-style-type: none;
+  border-top: var(--slick-pagination-border-top, $slick-pagination-border-top);
+  border-right: var(--slick-pagination-border-right, $slick-pagination-border-right);
+  border-bottom: var(--slick-pagination-border-bottom, $slick-pagination-border-bottom);
+  border-left: var(--slick-pagination-border-left, $slick-pagination-border-left);
+  width: 100%;
+  height: var(--slick-pagination-height, $slick-pagination-height);
+  padding-top: 4px;
+  vertical-align: middle;
+  font-family: var(--slick-font-family, $slick-font-family);
+  font-size: var(--slick-pagination-font-size, $slick-pagination-font-size);
+  font-weight: 400;
+  color: var(--slick-pagination-text-color, $slick-pagination-text-color);
+
+  .slick-pagination-status {
+    display: inline-block;
+    padding: 6px;
+  }
+
+  .ui-icon-container {
+    display: inline-block;
+    border-color: var(--slick-pagination-border-color, $slick-pagination-border-color);
+  }
+
+  .slick-pagination-nav {
+    display: inline-block;
+    padding: 2px;
+    height: 34px;
+
+    nav {
+      display: inline-block;
+    }
+
+    .slick-page-number {
+      vertical-align: top;
+      margin-top: 6px;
+      display: inline-block;
+      padding: 0 5px;
+
+      input {
+        background-color: var(--slick-pagination-page-input-bgcolor, $slick-pagination-page-input-bgcolor);
+        height: var(--slick-pagination-page-input-height, $slick-pagination-page-input-height);
+        width: var(--slick-pagination-page-input-width, $slick-pagination-page-input-width);
+        padding: var(--slick-pagination-page-input-padding, $slick-pagination-page-input-padding);
+        border-radius: var(--slick-pagination-page-input-border-radius, $slick-pagination-page-input-border-radius);
+        display: inline-block;
+      }
+    }
+
+    .pagination {
+      margin: 0;
+      display: inline-flex;
+
+      .page-link {
+        display: flex;
+        align-items: center;
+        font-size: var(--slick-pagination-icon-font-size, $slick-pagination-icon-font-size);
+        border: var(--slick-pagination-button-border, $slick-pagination-button-border);
+        height: var(--slick-pagination-button-height, $slick-pagination-button-height);
+      }
+
+      .page-item {
+        cursor: pointer;
+
+        a[class*="icon-seek-"] {
+            border-color: var(--slick-pagination-button-border-color, $slick-pagination-button-border-color);
+            color: var(--slick-pagination-icon-color, $slick-pagination-icon-color);
+            text-decoration: none;
+            font-family: var(--slick-icon-font-family, $slick-icon-font-family);
+            line-height: var(--slick-pagination-icon-line-height, $slick-pagination-icon-line-height);
+            -webkit-text-stroke: var(--slick-pagination-icon-seek-text-stroke, $slick-pagination-icon-seek-text-stroke);
+            padding: var(--slick-pagination-button-padding, $slick-pagination-button-padding);
+        }
+        a[class*="icon-seek-"]:hover {
+          background-color: var(--slick-pagination-button-hover-color, $slick-pagination-button-hover-color);
+        }
+
+        &:first-child {
+          a, span {
+            border-top-left-radius: var(--slick-pagination-button-border-radius, $slick-pagination-button-border-radius);
+            border-bottom-left-radius: var(--slick-pagination-button-border-radius, $slick-pagination-button-border-radius);
+          }
+        }
+        &:last-child {
+          a, span {
+            border-top-right-radius: var(--slick-pagination-button-border-radius, $slick-pagination-button-border-radius);
+            border-bottom-right-radius: var(--slick-pagination-button-border-radius, $slick-pagination-button-border-radius);
+          }
+        }
+
+        .icon-seek-first:before {
+          content: var(--slick-pagination-icon-seek-first, $slick-pagination-icon-seek-first);
+          width: var(--slick-pagination-icon-seek-first-width, $slick-pagination-icon-seek-first-width);
+        }
+        .icon-seek-prev:before {
+          content: var(--slick-pagination-icon-seek-prev, $slick-pagination-icon-seek-prev);
+          width: var(--slick-pagination-icon-seek-prev-width, $slick-pagination-icon-seek-prev-width);
+        }
+        .icon-seek-next:before {
+          content: var(--slick-pagination-icon-seek-next, $slick-pagination-icon-seek-next);
+          width: var(--slick-pagination-icon-seek-next-width, $slick-pagination-icon-seek-next-width);
+        }
+        .icon-seek-end:before {
+          content: var(--slick-pagination-icon-seek-end, $slick-pagination-icon-seek-end);
+
+          width: var(--slick-pagination-icon-seek-end-width, $slick-pagination-icon-seek-end-width);
+        }
+        .icon-seek-first:before,
+        .icon-seek-prev:before,
+        .icon-seek-next:before,
+        .icon-seek-end:before {
+          display: block;
+          height: var(--slick-pagination-icon-height, $slick-pagination-icon-height);
+        }
+      }
+      .page-item.disabled {
+        cursor: not-allowed;
+        font-weight: normal;
+
+        a[class*="icon-seek-"] {
+          color: #b8b8b8;
+          background-color: rgb(249, 249, 249);
+          border-color: #dedede;
+        }
+      }
+    }
+  }
+
+  .slick-pagination-settings {
+    display: block;
+    float: right;
+    padding: 2px;
+
+    select {
+      background-color: var(--slick-pagination-page-select-bg-color, $slick-pagination-page-select-bg-color);
+      font-size: var(--slick-pagination-page-select-font-size, $slick-pagination-page-select-font-size);
+      line-height: 1.5;
+      height: var(--slick-pagination-page-select-height, $slick-pagination-page-select-height);
+      width: var(--slick-pagination-page-select-width, $slick-pagination-page-select-width);
+      padding: var(--slick-pagination-page-select-padding, $slick-pagination-page-select-padding);
+      border: var(--slick-pagination-button-border, $slick-pagination-button-border);
+      border-radius: var(--slick-pagination-page-select-border-radius, $slick-pagination-page-select-border-radius);
+    }
+
+    .slick-pagination-count {
+      margin-left: var(--slick-pagination-count-margin-left, $slick-pagination-count-margin-left);
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalesPlan_Compact</fullName>
+    <fields>l_Project__c</fields>
+    <fields>l_Opportunity__c</fields>
+    <fields>l_Quote__c</fields>
+    <label>SalesPlan Compact</label>
+</CompactLayout>

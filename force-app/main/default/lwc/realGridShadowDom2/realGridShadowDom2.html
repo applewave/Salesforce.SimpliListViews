@@ -1,0 +1,44 @@
+<!-- TEST 삭제 예정-->
+<template>
+    <lightning-card  title="Sales Plan" icon-name="custom:custom1">
+    <!-- <lightning-card> -->
+        <div class="slds-p-around_small">
+            <!-- <div class="slds-page-header__row slds-m-bottom_small">
+                <lightning-icon class="slds-m-right_small" icon-name="custom:custom1" alternative-text="Sales Plan" size="small"></lightning-icon>
+                <h1 class="slds-page-header__title">Sales Plan</h1>
+            </div> -->
+            <!-- <button onclick={exportGrid} class="slds-m-bottom_small">exportGrid</button> -->
+            <div class="slds-m-bottom_small slds-grid">
+                <span class="totalItem slds-m-right_small">
+                    <div class="">Total Amount</div>
+                    <div class="slds-grid slds-grid_align-spread">
+                        <span class="">$</span><span><lightning-formatted-number value="12345678"></lightning-formatted-number></span>
+                    </div>
+                </span>
+                <span class="totalItem">
+                    <div class="">Total Quantity</div>
+                    <div class="slds-text-align_right"><lightning-formatted-number value="12345678"></lightning-formatted-number></div>
+                </span>
+            </div>
+
+            <div data-id="realgrid" style="width:100%; height: 300px" lwc:dom="manual"></div> 
+            
+            <div class="slds-m-top_medium">
+                <button onclick={changeMode} class="slds-m-bottom_small">Change Editable (now:{editable})</button> 
+                <template lwc:if={editable}>
+                    &nbsp;
+                    <button onclick={insertEmptyRow} class="slds-m-bottom_small">빈행삽입</button> 
+                    &nbsp;
+                    <button onclick={btnRemoveRow} class="slds-m-bottom_small">행삭제</button> 
+
+                </template>
+                <br/>
+                <div style="width: 100%;">
+                    event chk : <br/> 
+                    <lightning-formatted-rich-text value={eventMsg}>
+                    </lightning-formatted-rich-text>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

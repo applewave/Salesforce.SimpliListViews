@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>CIP</fullName>
+        <default>false</default>
+        <label>CIP</label>
+    </customValue>
+    <description>거래조건</description>
+    <masterLabel>Incoterms</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

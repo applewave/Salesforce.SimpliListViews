@@ -1,0 +1,88 @@
+{
+  "name": "@slickgrid-universal/vanilla-force-bundle",
+  "version": "3.7.2",
+  "description": "Vanilla Slick Grid Bundle (mostly exist for our Salesforce implementation) - Similar to Vanilla Bundle, the only difference is that it adds extra packages within its bundle (CustomTooltip, CompositeEditor & TextExport)",
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "index.d.ts",
+  "typesVersions": {
+    ">=4.2": {
+      "*": [
+        "dist/types/*"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "node": "./dist/commonjs/index.js",
+      "require": "./dist/commonjs/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm run clean",
+    "build": "tsc --build",
+    "postbuild": "pnpm run bundle:commonjs",
+    "build:incremental": "tsc --incremental --declaration",
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
+    "bundle": "npm-run-all bundle:commonjs bundle:vite",
+    "bundle:commonjs": "tsc --project tsconfig.bundle.json --outDir dist/commonjs --module commonjs",
+    "bundle:esm": "tsc --project tsconfig.bundle.json --outDir dist/esm --module esnext --target es2018",
+    "bundle:types": "tsc --emitDeclarationOnly --declarationMap --outDir dist/types",
+    "bundle:esbuild": "node esbuild.mjs",
+    "bundle:vite": "vite build",
+    "prebundle:zip": "pnpm run delete:zip",
+    "bundle:zip": "pnpm run zip:dist",
+    "delete:zip": "rimraf dist-grid-bundle-zip",
+    "zip:dist": "node compress.mjs --output-filename=slickgrid-vanilla-bundle --output-folder=\"dist-grid-bundle-zip/\"",
+    "test": "echo testing slickgrid-universal vanilla-force-bundle code"
+  },
+  "note": "there are 2 bundler available vite & esbuild, but we really only use Vite only but we keep esbuild for reference",
+  "license": "MIT",
+  "author": "Ghislain B.",
+  "homepage": "https://github.com/ghiscoding/slickgrid-universal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghiscoding/slickgrid-universal.git",
+    "directory": "packages/vanilla-force-bundle"
+  },
+  "bugs": {
+    "url": "https://github.com/ghiscoding/slickgrid-universal/issues"
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "not dead"
+  ],
+  "dependencies": {
+    "@slickgrid-universal/binding": "workspace:~",
+    "@slickgrid-universal/common": "workspace:~",
+    "@slickgrid-universal/composite-editor-component": "workspace:~",
+    "@slickgrid-universal/custom-footer-component": "workspace:~",
+    "@slickgrid-universal/custom-tooltip-plugin": "workspace:~",
+    "@slickgrid-universal/empty-warning-component": "workspace:~",
+    "@slickgrid-universal/event-pub-sub": "workspace:~",
+    "@slickgrid-universal/excel-export": "workspace:~",
+    "@slickgrid-universal/pagination-component": "workspace:~",
+    "@slickgrid-universal/text-export": "workspace:~",
+    "@slickgrid-universal/utils": "workspace:~",
+    "@slickgrid-universal/vanilla-bundle": "workspace:~",
+    "whatwg-fetch": "^3.6.19"
+  },
+  "devDependencies": {
+    "archiver": "^6.0.1",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.19.9",
+    "npm-run-all2": "^6.1.1",
+    "vite": "^5.0.7",
+    "yargs": "^17.7.2"
+  }
+}

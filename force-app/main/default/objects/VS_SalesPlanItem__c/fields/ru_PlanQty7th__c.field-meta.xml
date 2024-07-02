@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ru_PlanQty7th__c</fullName>
+    <externalId>false</externalId>
+    <label>Plan Quantity(7th)</label>
+    <summarizedField>VS_SalesPlanDetail__c.PlanQty__c</summarizedField>
+    <summaryFilterItems>
+        <field>VS_SalesPlanDetail__c.NoOfYears__c</field>
+        <operation>equals</operation>
+        <value>7</value>
+    </summaryFilterItems>
+    <summaryForeignKey>VS_SalesPlanDetail__c.l_SalesPlanItem__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

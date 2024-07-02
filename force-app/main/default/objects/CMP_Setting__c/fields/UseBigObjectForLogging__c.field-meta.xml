@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UseBigObjectForLogging__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Whether to use big object (InterfaceLog__b) to log interface log or user custom object (InterfaceLog2__c)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Whether to use big object (InterfaceLog__b) to log interface log or user custom object (InterfaceLog2__c)</inlineHelpText>
+    <label>Use Big Object for logging</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

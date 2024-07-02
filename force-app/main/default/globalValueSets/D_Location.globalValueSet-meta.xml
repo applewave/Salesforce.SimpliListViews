@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>VNHPH</fullName>
+        <default>false</default>
+        <label>VNHPH</label>
+    </customValue>
+    <description>최종 목적지 정보</description>
+    <masterLabel>D Location</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

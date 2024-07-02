@@ -1,0 +1,29 @@
+@import './variables';
+
+/* Individual cell styles */
+.percent-complete-bar {
+  display: inline-block;
+  height: 6px;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.percent-complete-bar-with-text {
+  display: inline-block;
+  height: 20px;
+  border-radius: 3px;
+  background-color: transparent;
+  line-height: 20px;
+  min-width: 25px;
+  text-align: center;
+  top: 2px;
+  color: #ffffff;
+}
+
+.tooltip-2cols-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 5px;
+  line-height: 20px;
+}

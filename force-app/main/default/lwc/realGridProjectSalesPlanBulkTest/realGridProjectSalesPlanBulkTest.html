@@ -1,0 +1,40 @@
+<!-- 
+ * File Name    : realGridProjectSalesPlanBulkTest
+ * Author       : ar.kim
+ * Date         : 2024-06-28
+ * Description  :  
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ===============================================================
+ * Ver      Date           Author              Modification
+ * ===============================================================
+   1.0      2024-06-28     ar.kim              Create   
+                      
+-->
+<template>
+    <lightning-card  title="Project Sales Plan" icon-name="standard:bot">
+        <div class="slds-p-around_small">
+            <div class="slds-m-bottom_small slds-grid">
+                <lightning-select
+                    value={selectVal}
+                    label="Select a Project"
+                    options={pjtOptions}
+                    onchange={handleChangeProject}
+                    size="5"
+                ></lightning-select>
+            </div>
+
+            <c-pjt-sales-plan-vertical-view></c-pjt-sales-plan-vertical-view>
+
+            <!--<lightning-tabset>
+                <lightning-tab label="Horizontal"> 
+                    <c-pjt-sales-plan-horizontal-view></c-pjt-sales-plan-horizontal-view>
+                </lightning-tab>
+
+                
+            </lightning-tabset>-->
+        </div>
+           
+    </lightning-card>
+    
+</template>

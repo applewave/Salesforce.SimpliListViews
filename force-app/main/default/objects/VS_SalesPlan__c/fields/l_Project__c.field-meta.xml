@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>l_Project__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>프로젝트 lookup</description>
+    <externalId>false</externalId>
+    <label>Project</label>
+    <referenceTo>VS_Project__c</referenceTo>
+    <relationshipLabel>SalesPlans</relationshipLabel>
+    <relationshipName>SalesPlans</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

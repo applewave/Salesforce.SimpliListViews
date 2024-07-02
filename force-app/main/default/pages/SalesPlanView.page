@@ -1,0 +1,8 @@
+<apex:page >
+    <p>
+        <img src="https://lgevs--dev--c.sandbox.vf.force.com/resource/1718940761000/SalesPlanView?" width="1100"/>
+    </p>
+    <p>
+        <img src="https://lgevs--dev--c.sandbox.vf.force.com/resource/1718941299000/SalesPlanYearExpand?" width="1100"/>
+    </p>
+</apex:page>

@@ -1,0 +1,197 @@
+@import './variables';
+
+/**
+ * Kraaden Autocomplete https://github.com/kraaden/autocomplete/blob/master/autocomplete.ts
+ */
+.slick-autocomplete {
+  background-color: var(--slick-autocomplete-bg-color, $slick-autocomplete-bg-color);
+  color: var(--slick-autocomplete-text-color, $slick-autocomplete-text-color);
+  border: var(--slick-autocomplete-border, $slick-autocomplete-border); // 1px solid rgba(50, 50, 50, 0.6);
+  box-sizing: border-box;
+  max-height: var(--slick-autocomplete-max-height, $slick-autocomplete-max-height);
+  min-height: var(--slick-autocomplete-min-height, $slick-autocomplete-min-height);
+  min-width: var(--slick-autocomplete-min-width, $slick-autocomplete-min-width);
+  overflow: auto;
+  z-index: var(--slick-autocomplete-z-index, $slick-autocomplete-z-index);
+
+  .empty {
+    font-style: italic;
+  }
+}
+
+.slick-autocomplete > div {
+  padding: 0 4px;
+}
+
+.slick-autocomplete .group {
+  background: var(--slick-autocomplete-group-bg-color, $slick-autocomplete-group-bg-color);
+}
+
+.slick-autocomplete > div:hover:not(.empty,.group),
+.slick-autocomplete > div.selected {
+  background-color: var(--slick-autocomplete-hover-bg-color, $slick-autocomplete-hover-bg-color);
+  cursor: pointer;
+}
+
+/* autocomplete loading spinner */
+@keyframes md-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.autocomplete-filter-container {
+  display: flex;
+}
+.slick-autocomplete-loading {
+  background-color: var(--slick-autocomplete-loading-input-bg-color, $slick-autocomplete-loading-input-bg-color) !important;
+
+  & + span:after {
+    animation: md-spin 2s infinite linear;
+    display: inline-block;
+    font-family: var(--slick-icon-font-family, $slick-icon-font-family);
+    color: var(--slick-autocomplete-loading-icon-color, $slick-autocomplete-loading-icon-color);
+    content: var(--slick-autocomplete-loading-icon, $slick-autocomplete-loading-icon);
+    width: var(--slick-autocomplete-loading-icon-width, $slick-autocomplete-loading-icon-width);
+    margin: var(--slick-autocomplete-loading-icon-margin, $slick-autocomplete-loading-icon-margin);
+    line-height: var(--slick-autocomplete-loading-icon-line-height, $slick-autocomplete-loading-icon-line-height);
+    vertical-align: var(--slick-autocomplete-loading-icon-vertical-align, $slick-autocomplete-loading-icon-vertical-align);
+  }
+}
+
+// ---
+// AutoComplete Custom Template Styling with 4 corners
+// ---------------------------------------------------
+
+/* autocomplete custom styling */
+.slick-autocomplete.autocomplete-custom-four-corners {
+  width: var(--slick-autocomplete-tpl4-width, $slick-autocomplete-tpl4-width);
+}
+.slick-autocomplete.autocomplete-custom-four-corners div div.autocomplete-container-list {
+  width: var(--slick-autocomplete-tpl4-container-list-width, $slick-autocomplete-tpl4-container-list-width);
+  padding: var(--slick-autocomplete-tpl4-container-list-padding, $slick-autocomplete-tpl4-container-list-padding);
+
+  div {
+    margin: 0;
+    padding: 0;
+    line-height: 16px;
+  }
+
+  .autocomplete-left {
+    float: left;
+    height: 32px;
+    width: 32px;
+    padding-right: 3px;
+  }
+
+  .autocomplete-left > img {
+    height: var(--slick-autocomplete-tpl4-icon-left-height, $slick-autocomplete-tpl4-icon-left-height);
+    width: var(--slick-autocomplete-tpl4-icon-left-width, $slick-autocomplete-tpl4-icon-left-width);
+    margin-top: 0px;
+    background-color: #ffffff;
+    background-clip: content-box;
+  }
+
+  .autocomplete-bottom-left {
+    color: var(--slick-autocomplete-tpl4-bottom-left-text-color, $slick-autocomplete-tpl4-bottom-left-text-color);
+    font-size: var(--slick-autocomplete-tpl4-bottom-left-font-size, $slick-autocomplete-tpl4-bottom-left-font-size);
+    font-style: var(--slick-autocomplete-tpl4-bottom-left-font-style, $slick-autocomplete-tpl4-bottom-left-font-style);
+    font-weight: var(--slick-autocomplete-tpl4-bottom-left-font-weight, $slick-autocomplete-tpl4-bottom-left-font-weight);
+    max-width: var(--slick-autocomplete-tpl4-bottom-left-max-width, $slick-autocomplete-tpl4-bottom-left-max-width);
+    display: inline-block;
+    /*margin-left: 30px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .autocomplete-bottom-right {
+    // margin-right: 12px;
+    float: right;
+    color: var(--slick-autocomplete-tpl4-bottom-right-text-color, $slick-autocomplete-tpl4-bottom-right-text-color);
+    font-size: var(--slick-autocomplete-tpl4-bottom-right-font-size, $slick-autocomplete-tpl4-bottom-right-font-size);
+    font-style: var(--slick-autocomplete-tpl4-bottom-right-font-style, $slick-autocomplete-tpl4-bottom-right-font-style);
+    font-weight: var(--slick-autocomplete-tpl4-bottom-right-font-weight, $slick-autocomplete-tpl4-bottom-right-font-weight);
+    /*margin-left: 30px;*/
+    text-overflow: ellipsis;
+    max-width: var(--slick-autocomplete-tpl4-bottom-right-max-width, $slick-autocomplete-tpl4-bottom-right-max-width);
+  }
+
+  .autocomplete-top-left {
+    color: var(--slick-autocomplete-tpl4-top-left-text-color, $slick-autocomplete-tpl4-top-left-text-color);
+    font-style: var(--slick-autocomplete-tpl4-top-left-font-style, $slick-autocomplete-tpl4-top-left-font-style);
+    font-size: var(--slick-autocomplete-tpl4-top-left-font-size, $slick-autocomplete-tpl4-top-left-font-size);
+    font-weight: var(--slick-autocomplete-tpl4-top-left-font-weight, $slick-autocomplete-tpl4-top-left-font-weight);
+    max-width: var(--slick-autocomplete-tpl4-top-left-max-width, $slick-autocomplete-tpl4-top-left-max-width);
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 1px;
+  }
+
+  .autocomplete-top-right {
+    // margin-right: 12px;
+    float: right;
+    color: var(--slick-autocomplete-tpl4-top-right-text-color, $slick-autocomplete-tpl4-top-right-text-color);
+    font-style: var(--slick-autocomplete-tpl4-top-right-font-style, $slick-autocomplete-tpl4-top-right-font-style);
+    font-size: var(--slick-autocomplete-tpl4-top-right-font-size, $slick-autocomplete-tpl4-top-right-font-size);
+    font-weight: var(--slick-autocomplete-tpl4-top-right-font-weight, $slick-autocomplete-tpl4-top-right-font-weight);
+    max-width: var(--slick-autocomplete-tpl4-top-right-max-width, $slick-autocomplete-tpl4-top-right-max-width);
+  }
+}
+
+// ---
+// AutoComplete Custom Template Styling with 2 rows
+// (similar to 4 corners except that it's 2 rows only)
+// ---------------------------------------------------
+
+/* autocomplete custom styling */
+.slick-autocomplete.autocomplete-custom-two-rows {
+  width: var(--slick-autocomplete-tpl2-width, $slick-autocomplete-tpl2-width);
+}
+.slick-autocomplete.autocomplete-custom-two-rows div div.autocomplete-container-list {
+  width: var(--slick-autocomplete-tpl2-container-list-width, $slick-autocomplete-tpl2-container-list-width);
+  padding: var(--slick-autocomplete-tpl2-container-list-padding, $slick-autocomplete-tpl2-container-list-padding);
+
+  div {
+    margin: 0;
+    padding: 0;
+    line-height: 16px;
+  }
+
+  .autocomplete-left {
+    float: left;
+    height: var(--slick-autocomplete-tpl2-icon-left-height, $slick-autocomplete-tpl2-icon-left-height);
+    width: var(--slick-autocomplete-tpl2-icon-left-width, $slick-autocomplete-tpl2-icon-left-width);
+    padding-right: 3px;
+  }
+
+  .autocomplete-left > img {
+    height: 32px;
+    margin-top: 0px;
+    background-color: #ffffff;
+    background-clip: content-box;
+  }
+
+  .autocomplete-bottom-left {
+    color: var(--slick-autocomplete-tpl2-bottom-left-text-color, $slick-autocomplete-tpl2-bottom-left-text-color);
+    font-size: var(--slick-autocomplete-tpl2-bottom-left-font-size, $slick-autocomplete-tpl2-bottom-left-font-size);
+    font-style: var(--slick-autocomplete-tpl2-bottom-left-font-style, $slick-autocomplete-tpl2-bottom-left-font-style);
+    font-weight: var(--slick-autocomplete-tpl2-bottom-left-font-weight, $slick-autocomplete-tpl2-bottom-left-font-weight);
+    max-width: var(--slick-autocomplete-tpl2-bottom-left-max-width, $slick-autocomplete-tpl2-bottom-left-max-width);
+    /*margin-left: 30px;*/
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .autocomplete-top-left {
+    color: var(--slick-autocomplete-tpl2-top-left-text-color, $slick-autocomplete-tpl2-top-left-text-color);
+    font-style: var(--slick-autocomplete-tpl2-top-left-font-style, $slick-autocomplete-tpl2-top-left-font-style);
+    font-size: var(--slick-autocomplete-tpl2-top-left-font-size, $slick-autocomplete-tpl2-top-left-font-size);
+    font-weight: var(--slick-autocomplete-tpl2-top-left-font-weight, $slick-autocomplete-tpl2-top-left-font-weight);
+    max-width: var(--slick-autocomplete-tpl2-top-left-max-width, $slick-autocomplete-tpl2-top-left-max-width);
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 1px;
+  }
+}

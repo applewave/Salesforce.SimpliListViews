@@ -1,0 +1,28 @@
+/*!
+ * SlickGrid custom styling for Material (https://github.com/ghiscoding/slickgrid-universal)
+ * Licensed under MIT (https://github.com/ghiscoding/slickgrid-universal/blob/master/LICENSE)
+ * @author: Ghislain B. (ghiscoding)
+ */
+
+ /**
+ * SlickGrid Material Theme
+ * (sames as `slickgrid-theme-material.scss` but without Flatpickr & Multiple-Select styling)
+ * We also removed `slick-without-bootstrap-min-styling.scss` since that is causing issues with Bootstrap 4
+ */
+
+/** SlickGrid Material Theme */
+@import './variables-theme-material';
+@import './roboto-font';
+@import './slick-grid';
+@import './slick-editors';
+@import './slick-plugins';
+@import './slick-component';
+@import './slickgrid-examples';
+@import './slick-bootstrap';
+@import './slick-autocomplete';
+@import './material-svg-icons';
+@import './material-svg-utilities';
+
+$link-color: var(--slick-primary-color, $slick-primary-color) !default;
+@import './colors.scss';
+@import './extra-styling.scss';

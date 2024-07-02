@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CustomerAgreement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>고객과 합의된 물동 계획인지 여부 관리</description>
+    <externalId>false</externalId>
+    <label>Customer Agreement</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

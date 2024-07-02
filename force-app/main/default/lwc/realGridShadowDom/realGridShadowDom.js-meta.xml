@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Real Grid Shadow Dom</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Real Grid Shadow Dom</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__Tab</target>
+    </targets>
+</LightningComponentBundle>

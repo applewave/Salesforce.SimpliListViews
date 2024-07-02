@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>fm_OpportunityItemName__c</fullName>
+    <externalId>false</externalId>
+    <formula>l_OpportunityItem__r.Name</formula>
+    <label>OpportunityItemName</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>l_SalesPlanItem__c</fullName>
+    <externalId>false</externalId>
+    <label>SalesPlanItem</label>
+    <referenceTo>VS_SalesPlanItem__c</referenceTo>
+    <relationshipLabel>SalesPlanDetails</relationshipLabel>
+    <relationshipName>SalesPlanDetails</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

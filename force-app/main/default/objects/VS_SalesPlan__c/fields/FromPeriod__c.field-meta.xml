@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FromPeriod__c</fullName>
+    <description>SalesPlan을 작성하는 From 년월 정보를 입력하는 필드</description>
+    <externalId>false</externalId>
+    <label>From</label>
+    <length>6</length>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

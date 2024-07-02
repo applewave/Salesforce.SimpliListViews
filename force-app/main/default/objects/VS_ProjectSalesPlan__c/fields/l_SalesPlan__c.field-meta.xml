@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>l_SalesPlan__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>영업기회별 영업기회와 동기화된 SalesPlan</description>
+    <externalId>false</externalId>
+    <label>SalesPlan</label>
+    <referenceTo>VS_SalesPlan__c</referenceTo>
+    <relationshipLabel>ProjectSalesPlans</relationshipLabel>
+    <relationshipName>ProjectSalesPlans</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

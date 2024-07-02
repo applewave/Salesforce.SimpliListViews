@@ -1,0 +1,81 @@
+$slick-button-border-color: #c7c7c7 !default;
+$slick-font-size-count: 50;
+$slick-margin-max-count: 50;
+$slick-padding-max-count: 30;
+
+.pointer { cursor: pointer; }
+.bold { font-weight: bold; }
+
+.fake-hyperlink {
+  cursor: pointer;
+  color: $slick-link-color;
+  &:hover {
+      text-decoration: underline;
+  }
+}
+
+.button-style {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #{$slick-button-border-color};
+  border-radius: 2px;
+  justify-content: center;
+  text-align: center;
+  &:hover {
+    border-color: darken($slick-button-border-color, 15%);
+  }
+}
+
+.delete-icon {
+  &:hover {
+      color: #b14c4a;
+  }
+}
+.edit-icon,
+.info-icon {
+  &:hover {
+      color: rgb(0, 153, 255);
+  }
+}
+
+// margin-0px up to margin-30px
+@for $slick-i from 0 through $slick-margin-max-count {
+  .margin-#{$slick-i}px { margin: #{$slick-i}px; }
+}
+
+// padding-0px up to padding-30px
+@for $slick-i from 0 through $slick-padding-max-count {
+  .padding-#{$slick-i}px { padding: #{$slick-i}px; }
+}
+
+// font-5px up to font-50px
+@for $slick-i from 5 through $slick-font-size-count {
+  .font-#{$slick-i}px { font-size: #{$slick-i}px; }
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+/* Text and Alignment Utilities */
+.text-bold { font-weight: bold !important; }
+.text-italic { font-style: italic !important; }
+.text-center { text-align: center !important; }
+.text-left   { text-align: left !important; }
+.text-right  { text-align: right !important; }
+.text-lowercase { text-transform: lowercase !important; }
+.text-uppercase { text-transform: uppercase !important; }
+.text-underline { text-decoration: underline !important; }
+
+.vertical-align-bottom {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.vertical-align-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+.vertical-align-top {
+  display: inline-block;
+  vertical-align: top;
+}

@@ -1,0 +1,16 @@
+.slickgrid-container {
+    width: 100% !important;
+}
+
+.slickgrid-table {
+    width: 100% !important;
+}
+
+.slick-empty-data-warning {
+    margin-left: 0 !important;
+    text-align: center !important;
+}
+
+.custom-float-left{
+    float: left !important;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ModelM1M2Code__c</fullName>
+    <description>견적모델 생성시 M1 과 M2 두자리의 코드 정보</description>
+    <externalId>false</externalId>
+    <label>Model M1 M2 Code</label>
+    <length>2</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

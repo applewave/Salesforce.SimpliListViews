@@ -1,0 +1,17 @@
+<!-- Real Grid Shadow Dom -->
+<template>
+    <lightning-card  title={title} icon-name={iconName}>
+        <lightning-button variant="brand-outline" label ="Excel Download" class="slds-m-left_x-small" onclick={exportGrid} slot="actions" ></lightning-button>
+        <div class="totalContainer">
+            <div class="totalItem">
+                <span class="title">Total Amount</span>
+                <span class="amount">$ 2,808,000</span>
+            </div>
+            <div class="totalItem" style="margin-left: 1%;">
+                <span class="title">Total Quantity</span>
+                <span class="amount">$ 34,342</span>
+            </div>
+        </div>
+        <div data-id="realgrid" style="max-width:99%; height: 350px;" class="realgrid-container slds-m-around_small"></div>
+    </lightning-card>
+</template>

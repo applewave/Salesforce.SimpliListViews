@@ -1,0 +1,43 @@
+<!--
+ * File Name   : cmp_CustomWideScreenFlowEditor.html
+ * Author      : ThienVM2
+ * Date        : 2024-01-24
+ * Description : Screen Flow Enhencenment - Wide Screen Editor
+ * Copyright (c) 2023. LG CNS, All Rights Reserved.
+ * Modification Log
+ * ==================================================================
+ * Ver        Date               Author         Modification
+ * ==================================================================
+   1.0     2024-01-24            ThienVM2       Create               
+ -->
+<template>
+    <lightning-input 
+        required 
+        class="width-inp" 
+        type="number" 
+        label={labCustomWidth} 
+        value={width} 
+        data-id="width"
+        onchange={handleChangeVal}>
+    </lightning-input>
+
+    <lightning-input 
+        required 
+        class="max-width-inp" 
+        type="number" 
+        label={labCustomMaxWidth} 
+        value={maxWidth}
+        data-id="maxWidth" 
+        onchange={handleChangeVal}>
+    </lightning-input>
+
+    <lightning-input 
+        required 
+        class="min-width-inp" 
+        type="number" 
+        label={labCustomMinWidth} 
+        value={minWidth}
+        data-id="minWidth" 
+        onchange={handleChangeVal}>
+    </lightning-input>
+</template>
